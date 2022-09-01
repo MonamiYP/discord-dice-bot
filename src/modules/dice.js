@@ -1,4 +1,4 @@
-function rollDice(number, value, modifier) {
+function rollDice(number, value) {
     const DICE_SIDES = [4, 6, 8, 10, 12, 20, 100]
 
     if (number >= 10) {
@@ -10,7 +10,7 @@ function rollDice(number, value, modifier) {
 
     let rolls = [];
     for (let i = 0; i < number; i ++) {
-        const rollValue = Math.floor(Math.random() * value) + 1 + modifier;
+        const rollValue = Math.floor(Math.random() * value) + 1;
         if (rollValue == NaN) {
             return "Invalid input"
         }
