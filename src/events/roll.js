@@ -5,7 +5,7 @@ module.exports = {
     execute(message) {
         if (message.author.bot) { return }
 
-        if (message.content.substring(0, 5) == ".roll") {
+        if (message.content.substring(0, 5) == "!roll") {
             try {
                 let reply_message = "The format of your roll command is not correct";
                 const dice_arguments = message.content.split(' ');
@@ -27,7 +27,7 @@ module.exports = {
             } catch (err) {
                 message.reply("Oopsies, something has gone wrong.");
             }
-        } else if (message.content == ".randchar") {
+        } else if (message.content == "!randchar") {
             const sorted_roll_values = rollDice(4, 6, 0).sort();
             const smallest_roll = sorted_roll_values.shift();
             const reply_message = `Generated random stats:\n[${sorted_roll_values}] (deleted ${smallest_roll})`;
