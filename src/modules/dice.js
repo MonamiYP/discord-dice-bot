@@ -9,7 +9,7 @@ function rollDice(number, value, modifier) {
     }
 
     let rolls = [];
-    for (i = 0; i < number; i ++) {
+    for (let i = 0; i < number; i ++) {
         const rollValue = Math.floor(Math.random() * value) + 1 + modifier;
         if (rollValue == NaN) {
             return "Invalid input"
