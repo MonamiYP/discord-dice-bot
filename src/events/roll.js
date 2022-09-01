@@ -5,23 +5,25 @@ module.exports = {
     execute(message) {
         if (message.author.bot) { return }
 
-        if (message.content.substring(0, 5) == "!roll") {
+        if (message.content.substring(0, 5) == ".roll") {
             try {
                 let reply_message = "The format of your roll command is not correct";
                 const dice_arguments = message.content.split(' ');
-                const dice_number_value = dice_arguments[1].split('d');
-                const number = parseInt(dice_number_value[0]);
-                const value = parseInt(dice_number_value[1]);
-                let modifier = 0;
-            
-                if (dice_arguments.length == 3) {
-                    modifier = parseInt(dice_arguments[2].slice(1));
-                } else if (dice_arguments.length != 2) {
-                    return
-                }
 
-                const roll_values = rollDice(number, value, modifier).toString();
-                reply_message = reply_message = `Rolled: [${roll_values}]`;
+                if (dice_arguments.length == 2) {
+                    const dice_roll_modifier = dice_arguments[1].split('+');
+                    const roll_number_value = dice_roll_modifier[0].split('d');
+                    const number = parseInt(roll_number_value[0]);
+                    const value = parseInt(roll_number_value[1]);
+
+                    let modifier = parseInt(dice_roll_modifier[1]);
+                    if (Number.isNaN(modifier)) {
+                        modifier = 0;
+                    }
+
+                    const roll_values = rollDice(number, value, modifier).toString();
+                    reply_message = reply_message = `Rolled: [${roll_values}]`;
+                }
 
                 message.reply(reply_message);
             } catch (err) {
