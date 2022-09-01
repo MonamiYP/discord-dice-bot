@@ -6,9 +6,9 @@ module.exports = {
     execute(message) {
         if (message.author.bot) { return }
 
-        if (message.content.substring(0, 5) == ".roll") {
+        if (message.content.substring(0, 5) == "!roll") {
             roll(message);
-        } else if (message.content == ".randchar") {
+        } else if (message.content == "!randchar") {
             randchar(message);
         }
     }
