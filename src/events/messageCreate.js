@@ -1,5 +1,6 @@
-const roll = require('../commands/roll')
-const randchar = require('../commands/randchar')
+const roll = require('../commands/roll');
+const randchar = require('../commands/randchar');
+const help = require('../commands/help');
 
 module.exports = {
     name: 'messageCreate',
@@ -10,6 +11,8 @@ module.exports = {
             roll(message);
         } else if (message.content == "!randchar") {
             randchar(message);
+        } else if (message.content == "!help") {
+            help(message);
         }
     }
 };
